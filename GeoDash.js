@@ -14,19 +14,22 @@ const PLAYER_WIDTH = 25;
 // setup()
 /*******************************************************/
 function setup() {
-  console.log("setup: ");
-  cnv = new Canvas( SCREEN_WIDTH, SCREEN_HEIGHT);
-  player = new Sprite(40, 40, 40, 40, 'd');
-  player.color = color('purple');
-  floor = new Sprite(SCREEN_WIDTH/2, SCREEN_HEIGHT, SCREEN_WIDTH, 4, 's');
-  floor.color = color('black');
-  world.gravity.y = 10;
-  document.addEventListener('keydown',
-    function(event){
-        console.log('Key pressed');
-        if (event.code === 'ArrowLeft') {
-        }else {
-    }
+    console.log("setup: ");
+    cnv= new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+    player = new Sprite(PLAYER_WIDTH*1.2,  SCREEN_HEIGHT/2, PLAYER_WIDTH, PLAYER_HEIGHT, 'd');
+    player.color = color("purple");
+    floor =  new Sprite(SCREEN_WIDTH/2,  SCREEN_HEIGHT, SCREEN_WIDTH, 4, 's');
+    floor.color = color("black");
+    world.gravity.y = 80;
+    
+    document.addEventListener("keydown", 
+        function(event) {
+            console.log("Key pressed!"+player.y);
+
+            if(player.y > 184 ){// 184 - found from testing - floor level
+                console.log("Key pressed!");
+                player.vel.y = -20;
+            }
     });
 }
 
