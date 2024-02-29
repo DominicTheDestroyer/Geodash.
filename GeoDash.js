@@ -6,14 +6,14 @@
 console.log("%c t01_create_sprite", "color: blue;");
 
 const SCREEN_WIDTH = 500;
-const SCREEN_HEIGHT = 200;
+const SCREEN_HEIGHT = 400;
 const PLAYER_HEIGHT = 25;
 const PLAYER_WIDTH = 25;
 
 
 const OBSTACLE_HEIGHT = PLAYER_HEIGHT;
 const OBSTACLE_WIDTH = PLAYER_WIDTH;
-
+var spawnDist = 0+1;
 
 var obstacles;
 /*******************************************************/
@@ -22,7 +22,6 @@ var obstacles;
 function setup() {
     console.log("setup: ");
     cnv= new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
-    
     player = new Sprite(PLAYER_WIDTH*1.2,  SCREEN_HEIGHT/2, PLAYER_WIDTH, PLAYER_HEIGHT, 'd');
     player.color = color("purple");
     
@@ -56,9 +55,14 @@ function setup() {
 /*******************************************************/
 function draw() {
   background('lightblue');
+  
+  nextSpawn = frameCount + random(100,1000);
+  if()
   newObstacle();
 }
 function newObstacle(){
+    spawnDist=spawnDist + 100;
+    console.log(spawnDist)
     obstacle = new Sprite(SCREEN_WIDTH-100,  SCREEN_HEIGHT - OBSTACLE_HEIGHT/2, OBSTACLE_WIDTH, OBSTACLE_HEIGHT, 'k');
     obstacle.color = color("blue");
     obstacle.vel.x = -10;
